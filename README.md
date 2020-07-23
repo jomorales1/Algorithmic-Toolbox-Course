@@ -1,1 +1,1 @@
-# ALgorithmic-Toolbox-Course
+# Algorithmic-Toolbox-Course
