@@ -13,6 +13,8 @@ long long gcd(long long a, long long b) {
 }
 
 int main() {
-
+    long long a, b;
+    cin >> a >> b;
+    cout << "GCD: " << gcd(a, b) << "\n";
     return 0;
 }
