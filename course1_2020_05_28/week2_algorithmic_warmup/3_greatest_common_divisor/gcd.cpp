@@ -1,4 +1,14 @@
-#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int gcd_fast(int a, int b) {
+  if (b > a)
+    swap(a, b);
+  if (b == 0)
+    return a;
+  return gcd_fast(b, a % b);
+}
 
 int gcd_naive(int a, int b) {
   int current_gcd = 1;
@@ -14,7 +24,7 @@ int gcd_naive(int a, int b) {
 
 int main() {
   int a, b;
-  std::cin >> a >> b;
-  std::cout << gcd_naive(a, b) << std::endl;
+  cin >> a >> b;
+  cout << gcd_fast(a, b) << "\n";
   return 0;
 }
