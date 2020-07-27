@@ -25,10 +25,10 @@ int fibonacci_naive(int n) {
 }
 
 long long fibonacci_fast(int n) {
-    // write your code here
-    if (f[n] != -1)
-        return f[n];
-    return fibonacci_fast(n - 1) + fibonacci_fast(n - 2);
+    for (int i = 2; i <= n; i++) {
+        f[i] = f[i - 1] + f[i - 2];
+    }
+    return f[n];
 }
 
 void test_solution() {
@@ -41,9 +41,6 @@ void test_solution() {
 int main() {
     f[0] = 0;
     f[1] = 1;
-    for (int i = 2; i < 46; i++) {
-        f[i] = -1;
-    }
     int n = 0;
     cin >> n;
 

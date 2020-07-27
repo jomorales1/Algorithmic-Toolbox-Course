@@ -2,6 +2,16 @@
 
 using namespace std;
 
+int fibonacci(long long n, long long m) {
+    int f[n + 1];
+    f[0] = 0;
+    f[1] = 1;
+    for (int i = 2; i <= n; i++) {
+        f[i] = (f[i - 1] + f[i - 2]) % m;
+    }
+    return f[n];
+}
+
 long long get_fibonacci_huge_fast(long long n, long long m) {
     /*long long f[n + 1];
     f[0] = 0;
@@ -14,17 +24,18 @@ long long get_fibonacci_huge_fast(long long n, long long m) {
     if (n <= 1)
         return n;
 
+    int p = 0;
     vector<int> period;
-    long long prev = 0;
-    long long curr = 1;
     period.push_back(0);
-    while (curr != 0) {
-        period.push_back(curr);
-        long long tmp_prev = prev;
-        prev = curr;
-        curr = (tmp_prev + curr) % m;
+    period.push_back(1);
+    for (int i = 2; i < m * m; i++) {
+        if (fibonacci(i, m) == 0 && fibonacci(i + 1, m) == 1){
+            p = i;
+            break;
+        }
+        period.push_back(fibonacci(i, m));
     }
-    long long pos = n % period.size();
+    long long pos = n % p;
     return period[pos];
 }
 
