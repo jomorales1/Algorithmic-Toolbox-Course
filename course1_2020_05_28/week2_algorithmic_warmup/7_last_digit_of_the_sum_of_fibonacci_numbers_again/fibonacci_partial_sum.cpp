@@ -40,6 +40,8 @@ long long get_fibonacci_huge_fast(long long n, long long m) {
 }
 
 int fibonacci_sum_fast(long long n) {
+    if (n <= 0)
+        return 0;
     if (n <= 1)
         return n;
     return (get_fibonacci_huge_fast(n + 2, 10) - 1 + 10) % 10;
