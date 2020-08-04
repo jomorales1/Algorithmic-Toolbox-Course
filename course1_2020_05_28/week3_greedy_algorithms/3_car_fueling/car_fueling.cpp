@@ -4,8 +4,7 @@ using namespace std;
 
 int compute_min_refills(int dist, int tank, vector<int> & stops) {
     // write your code here
-    if (dist > stops.back())
-        return 0;
+    stops.push_back(dist);
     int n = stops.size();
     int num_refills = 0;
     int current_refill = 0;
@@ -17,7 +16,7 @@ int compute_min_refills(int dist, int tank, vector<int> & stops) {
         if (current_refill == last_refill) {
             return -1;
         }
-        if (dist - stops[current_refill] > 0) {
+        if (current_refill < n) {
             num_refills++;
         }
     }
@@ -33,8 +32,9 @@ int main() {
     int n = 0;
     cin >> n;
 
-    vector<int> stops(n);
-    for (int i = 0; i < n; ++i)
+    vector<int> stops(n + 1);
+    stops[0] = 0;
+    for (int i = 1; i <= n; ++i)
         cin >> stops.at(i);
 
     cout << compute_min_refills(d, m, stops) << "\n";
