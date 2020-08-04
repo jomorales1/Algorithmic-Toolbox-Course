@@ -4,6 +4,8 @@ using namespace std;
 
 int compute_min_refills(int dist, int tank, vector<int> & stops) {
     // write your code here
+    if (dist > stops.back())
+        return 0;
     int n = stops.size();
     int num_refills = 0;
     int current_refill = 0;
