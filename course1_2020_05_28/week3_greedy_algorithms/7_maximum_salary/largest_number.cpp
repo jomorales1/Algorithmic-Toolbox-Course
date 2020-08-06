@@ -1,29 +1,28 @@
-#include <algorithm>
-#include <sstream>
-#include <iostream>
-#include <vector>
-#include <string>
+#include <bits/stdc++.h>
 
-using std::vector;
-using std::string;
+using namespace std;
 
-string largest_number(vector<string> a) {
-  //write your code here
-  std::stringstream ret;
-  for (size_t i = 0; i < a.size(); i++) {
-    ret << a[i];
-  }
-  string result;
-  ret >> result;
-  return result;
+bool comp(string a, string b) {
+    string ab = a.append(b);
+    string ba = b.append(a);
+    return ab.compare(ba) > 0 ? true : false;
+}
+
+void largest(vector<string> numbers) {
+    sort(numbers.begin(), numbers.end(), comp);
+    for (auto n: numbers) {
+        cout << n;
+    }
+    cout << "\n";
 }
 
 int main() {
-  int n;
-  std::cin >> n;
-  vector<string> a(n);
-  for (size_t i = 0; i < a.size(); i++) {
-    std::cin >> a[i];
-  }
-  std::cout << largest_number(a);
+    int n;
+    cin >> n;
+    vector<string> numbers(n);
+    for (int i = 0; i < n; i++) {
+        cin >> numbers[i];
+    }
+    largest(numbers);
+    return 0;
 }
