@@ -1,20 +1,35 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 
-using std::vector;
+using namespace std;
 
 vector<int> optimal_summands(int n) {
   vector<int> summands;
+  if (n <= 2) {
+    summands.push_back(n);
+    return summands;
+  }
   //write your code here
+  int summand = 1;
+  while (n > 0) {
+    summands.push_back(summand);
+    n -= summand;
+    summand++;
+    if ((n - summand) <= summand) {
+      summands.push_back(n);
+      break;
+    }
+  }
   return summands;
 }
 
 int main() {
   int n;
-  std::cin >> n;
+  cin >> n;
   vector<int> summands = optimal_summands(n);
-  std::cout << summands.size() << '\n';
-  for (size_t i = 0; i < summands.size(); ++i) {
-    std::cout << summands[i] << ' ';
+  cout << summands.size() << '\n';
+  for (int i = 0; i < summands.size(); ++i) {
+    cout << summands[i] << ' ';
   }
+  cout << "\n";
+  return 0;
 }
