@@ -15,7 +15,7 @@ int binary_search(const vector<int> &numbers, int a) {
         else
             low = k + 1;
     }
-    return -1;
+    return low - 1;
 }
 
 int recursive_binary_search(const vector<int> &numbers, int low, int high, int a) {
