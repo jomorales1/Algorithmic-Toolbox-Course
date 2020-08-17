@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+#include <cstdlib>
 
 using namespace std;
 
@@ -23,13 +24,23 @@ void quick_sort(int numbers[], int left, int right) {
     quick_sort(numbers, m + 1, right);
 }
 
+void randomized_quick_sort(int numbers[], int left, int right) {
+    if (left >= right)
+        return;
+    int k = rand() % (right - left + 1) + left;
+    swap(numbers[left], numbers[k]);
+    int m = partition(numbers, left, right);
+    quick_sort(numbers, left, m - 1);
+    quick_sort(numbers, m + 1, right);
+}
+
 int main() {
     int n = 0;
     cin >> n;
     int numbers[n];
     for (int i = 0; i < n; i++)
         cin >> numbers[i];
-    quick_sort(numbers, 0, n - 1);
+    randomized_quick_sort(numbers, 0, n - 1);
     for (int i = 0; i < n; i++)
         cout << numbers[i] << " ";
     cout << '\n';
