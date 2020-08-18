@@ -62,18 +62,7 @@ bool compare(vector<int> &a, vector<int> &b) {
     return true;
 }
 
-int main() {
-    /*int n = 0;
-    cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < a.size(); ++i) {
-        cin >> a[i];
-    }
-    randomized_quick_sort(a, 0, a.size() - 1);
-    for (int i = 0; i < a.size(); ++i) {
-        cout << a[i] << ' ';
-    }
-    cout << '\n';*/
+void stress_test() {
     while (true) {
         int n = rand() % 10 + 5;
         vector<int> numbers;
@@ -107,5 +96,19 @@ int main() {
             break;
         }
     }
+}
+
+int main() {
+    int n = 0;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < a.size(); ++i) {
+        cin >> a[i];
+    }
+    randomized_quick_sort(a, 0, a.size() - 1);
+    for (int i = 0; i < a.size(); ++i) {
+        cout << a[i] << ' ';
+    }
+    cout << '\n';
     return 0;
 }
