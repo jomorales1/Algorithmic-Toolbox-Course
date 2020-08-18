@@ -16,25 +16,26 @@ int partition(int numbers[], int left, int right) {
     return j;
 }
 
-pair<int, int> partition2(int numbers[], int left, int right) {
-    int x = numbers[left];
-    int j = left;
+pair<int, int> partition2(int a[], int left, int right) {
+    int x = a[left];
     int k = left;
     for (int i = left + 1; i <= right; i++) {
-        if (numbers[i] == x) {
+        if (a[i] == x) {
             k++;
-            swap(numbers[k], numbers[i]);
+            swap(a[k], a[i]);
         }
     }
-    for (int i = k; i <= right; i++) {
-        if (numbers[i] < x) {
+    int j = k;
+    int aux = left;
+    for (int i = k + 1; i <= right; i++) {
+        if (a[i] < x) {
             j++;
-            swap(numbers[j], numbers[i]);
+            swap(a[j], a[i]);
+            swap(a[j], a[aux]);
+            aux++;
         }
     }
-    swap(numbers[left], numbers[j]);
-    pair<int, int> res = {left, j};
-    return res;
+    return {aux, k};    
 }
 
 void quick_sort(int numbers[], int left, int right) {
