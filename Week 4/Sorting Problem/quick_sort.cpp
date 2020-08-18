@@ -72,8 +72,13 @@ void randomized_quick_sort3(int numbers[], int left, int right) {
         int k = rand() % (right - left + 1) + left;
         swap(numbers[left], numbers[k]);
         int m = partition(numbers, left, right);
-        randomized_quick_sort3(numbers, left, m - 1);
-        left = m + 1;
+        if (m - left < right - m) {
+            randomized_quick_sort3(numbers, left, m - 1);
+            left = m + 1;
+        } else {
+            randomized_quick_sort3(numbers, m + 1, right);
+            right = m - 1;
+        }
     }
 }
 
@@ -83,7 +88,7 @@ int main() {
     int numbers[n];
     for (int i = 0; i < n; i++)
         cin >> numbers[i];
-    randomized_quick_sort2(numbers, 0, n - 1);
+    randomized_quick_sort3(numbers, 0, n - 1);
     for (int i = 0; i < n; i++)
         cout << numbers[i] << " ";
     cout << '\n';
