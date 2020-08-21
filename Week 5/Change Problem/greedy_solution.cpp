@@ -2,14 +2,14 @@
 
 using namespace std;
 
-vector<int> change(vector<int> &denominations, int amount) {
+int change(vector<int> &denominations, int amount) {
     sort(denominations.rbegin(), denominations.rend());
     int n = denominations.size();
-    vector<int> result;
+    int result = 0;
     int index = 0;
     for (int i = 0; i < n; i++) {
         while(amount >= denominations[i]) {
-            result.push_back(denominations[i]);
+            result++;
             amount -= denominations[i];
         }
         if (amount == 0)
@@ -27,10 +27,7 @@ int main() {
     }
     int amount = 0;
     cin >> amount;
-    vector<int> result = change(denominations, amount);
-    for (const auto &coin : result) {
-        cout << coin << " ";
-    }
-    cout << '\n';
+    int result = change(denominations, amount);
+    cout << result << '\n';
     return 0;
 }
