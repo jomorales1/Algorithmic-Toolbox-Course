@@ -39,7 +39,7 @@ vector<int> sequence(int n) {
         dp2[2] = {1, 1};
     }
     if (n >= 3) {
-        dp2[3] = {1, 1};
+        dp2[3] = {2, 1};
     }
     for (int i = 4; i <= n; i++) {
         vector<int> results = {-1, -1, -1};
