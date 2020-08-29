@@ -18,13 +18,19 @@ int knapsack(vector<int> &weights, vector<int> &prizes, int W) {
     for (int i = 1; i <= n; i++) {
         for (int w = 1; w <= W; w++) {
             value[w][i] = value[w][i - 1];
-            if (weights[i] <= w) {
-                int val = value[w - weights[i]][i - 1] + prizes[i];
+            if (weights[i - 1] <= w) {
+                int val = value[w - weights[i - 1]][i - 1] + prizes[i - 1];
                 if (value[w][i] < val) {
                     value[w][i] = val;
                 }
             }
         }
+    }
+    for (int i = 0; i <= W; i++) {
+        for (int j = 0; j <= n; j++) {
+            cout << value[i][j] << '\t';
+        }
+        cout << '\n';
     }
     return value[W][n];
 }
